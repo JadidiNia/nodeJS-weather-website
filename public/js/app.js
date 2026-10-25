@@ -25,7 +25,7 @@ locationForm.addEventListener("submit", (e) => {
           messageP.textContent = "You must provide an address";
         } else {
           locaBold.textContent = '"' + data.location.charAt(0).toUpperCase()+ data.location.slice(1) + '"';
-          messageP.textContent = " is " + data.forecast + ' the temperature is ' + data.temperature + ' centigrade';
+          messageP.textContent = " is " + data.forecast + ' the temperature is ' + data.temperature + ' centigrade.';
         }
       })
       .catch((error) => {
