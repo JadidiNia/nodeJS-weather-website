@@ -56,12 +56,14 @@ app.get("/weather", (req, res) => {
     //   address: req.query.address
     // });
     geoCode(req.query.address, (error, { weatherData } = {}) => {
+      // console.log(weatherData.days[0])
       if (error) {
         return res.send({ error });
       } else {
         return res.send({
           location: weatherData.address,
           forecast: weatherData.days[0].description,
+          temperature: weatherData.days[0].temp,
           address: req.query.address,
         });
       }
@@ -84,7 +86,7 @@ app.get("/{*splat}", (req, res) => {
 const PORT = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log('Server is running at http://localhost:'+ PORT);
 });
 /*
 app.listen(3000, () => {

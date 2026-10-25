@@ -13,7 +13,7 @@ locationForm.addEventListener("submit", (e) => {
   //   }else{
   locaBold.textContent = "";
   messageP.textContent = "Loading...";
-  fetch(`http://localhost:3000/weather?address=${location}`).then((res) => {
+  fetch(`/weather?address=${location}`).then((res) => {
     res
       .json()
       .then((data) => {
@@ -25,7 +25,7 @@ locationForm.addEventListener("submit", (e) => {
           messageP.textContent = "You must provide an address";
         } else {
           locaBold.textContent = '"' + data.location.charAt(0).toUpperCase()+ data.location.slice(1) + '"';
-          messageP.textContent = " is " + data.forecast;
+          messageP.textContent = " is " + data.forecast + 'and the temperature is' + data.temperature + 'centigrade';
         }
       })
       .catch((error) => {
