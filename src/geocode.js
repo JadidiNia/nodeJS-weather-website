@@ -1,10 +1,14 @@
 import axios from "axios"
 import 'dotenv/config';
 
-const API_KEY = process.env.API_KEY;
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+  throw new Error("Weather API key is not configured");
+}
 
 const geoCode = (address , callback)=>{
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${API_KEY}&unitGroup=metric&locations=${address}`
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&unitGroup=metric&locations=${address}`
     axios.get(url).then(({data})=>{
         callback(undefined, {
             longitude : data.longitude,
