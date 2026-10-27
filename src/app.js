@@ -2,6 +2,8 @@ import path from "path";
 import express from "express";
 import hbs from "hbs";
 import { geoCode } from "./geocode.js";
+import 'dotenv/config';
+
 
 const app = express();
 

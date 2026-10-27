@@ -1,7 +1,10 @@
 import axios from "axios"
+import 'dotenv/config';
+
+const API_KEY = process.env.API_KEY;
 
 const geoCode = (address , callback)=>{
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=9A5AL5QMMJZBRUL9C2UN42Y3E&unitGroup=metric&locations=${address}`
+    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${API_KEY}&unitGroup=metric&locations=${address}`
     axios.get(url).then(({data})=>{
         callback(undefined, {
             longitude : data.longitude,
